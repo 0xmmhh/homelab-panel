@@ -1,0 +1,24 @@
+# .NET build output
+bin/
+obj/
+*.user
+
+# IDEs and AI assistants (per-machine state)
+.idea/
+.vscode/
+.junie/
+*.sln.iml
+
+# macOS
+.DS_Store
+
+# Frontend (later)
+node_modules/
+dist/
+
+# Local data and secrets
+*.db
+*.db-shm
+*.db-wal
+.env
+appsettings.*.local.json
