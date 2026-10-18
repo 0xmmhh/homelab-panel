@@ -4,6 +4,7 @@ namespace HomelabPanel.Api.Integrations.PiHole;
 
 public class PiHoleOptions
 {
+    public const string SectionName = "PiHole";
     [Url] [Required] public string BaseUrl { get; set; } = string.Empty;
 
     [Required] public string AppPassword { get; set; } = string.Empty;
