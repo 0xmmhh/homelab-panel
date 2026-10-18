@@ -7,6 +7,9 @@ Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger()
 try
 {
     var builder = WebApplication.CreateBuilder(args);
+
+    builder.Services.AddHealthChecks();
+
     builder.Services.AddSerilog((services, lc) =>
         lc.ReadFrom.Configuration(builder.Configuration).ReadFrom.Services(services));
 
@@ -40,6 +43,7 @@ try
     // No HTTPS redirection, which would also break Gitea webhook deliveries.
     // No authorization middleware until authentication exists.
     app.MapControllers();
+    app.MapHealthChecks("/health");
 
     app.Run();
     return 0;
