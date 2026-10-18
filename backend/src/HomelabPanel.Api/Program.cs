@@ -1,6 +1,7 @@
 using HomelabPanel.Api.Integrations;
 using HomelabPanel.Api.Integrations.Gitea;
 using HomelabPanel.Api.Integrations.PiHole;
+using Scalar.AspNetCore;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
@@ -37,6 +38,7 @@ try
     if (app.Environment.IsDevelopment())
     {
         app.MapOpenApi();
+        app.MapScalarApiReference();
     }
 
     // Plain HTTP on purpose: the app is only reachable on the LAN and over Tailscale (encrypted).
