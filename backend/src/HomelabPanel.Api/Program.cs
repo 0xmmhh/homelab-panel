@@ -36,10 +36,9 @@ try
         app.MapOpenApi();
     }
 
-    app.UseHttpsRedirection();
-
-    app.UseAuthorization();
-
+    // Plain HTTP on purpose: the app is only reachable on the LAN and over Tailscale (encrypted).
+    // No HTTPS redirection, which would also break Gitea webhook deliveries.
+    // No authorization middleware until authentication exists.
     app.MapControllers();
 
     app.Run();
