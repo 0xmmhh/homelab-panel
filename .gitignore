@@ -21,4 +21,6 @@ dist/
 *.db-shm
 *.db-wal
 .env
+.env.local
+.env.*.local
 appsettings.*.local.json
