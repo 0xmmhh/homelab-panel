@@ -10,6 +10,11 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     server: {
+      // Explicit IPv4 and a fixed port: "localhost" binds only to ::1 on macOS,
+      // and tools that probe the dev server (React Buddy) expect a stable URL.
+      host: '127.0.0.1',
+      port: 5173,
+      strictPort: true,
       // Same-origin calls in dev: no CORS, and the UI only ever talks to our API.
       proxy: {
         '/api': apiTarget,
